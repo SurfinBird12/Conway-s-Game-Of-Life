@@ -34,7 +34,7 @@ def draw_map(map, background_color, cell_color, rows, cols):
         for x in range(len(map[y])):
 
             if map[y][x] != 0:
-                pygame.draw.rect(screen, cell_color, (x * (screen.get_width() / cols), y * (screen.get_height() / rows), screen.get_width() / cols, screen.get_height() / rows))
+                pygame.draw.rect(screen, cell_color, (x * (screen.get_width() / cols) + 1, y * (screen.get_height() / rows) + 1, screen.get_width() / cols - 2, screen.get_height() / rows - 2))
 
 
 
@@ -99,26 +99,29 @@ def check_neighbours(map, rows, cols):
 
 
 
-
-rows = 100
-cols = 100
 background_color = (255, 241, 222)
 cell_color = (111, 200, 247)
 speed = int(input("Enter speed (fps): "))
 
 
 current_map = []
-user = input("Enter your map [none = 100x100 random map]: ")
+user = int(input("Enter your map size (none = 100x100): "))
 
 if user == "":
+    rows = 100
+    cols = 100
     map = create_map(rows, cols)
     for y in range(len(map)):
         for x in range(len(map[y])):
             map[y][x] = random.randint(0, 1)
 else:
-    map = user
-    rows = len(map)
-    cols = len(map[0])
+    rows = user
+    cols = user
+    map = create_map(rows, cols)
+    for y in range(len(map)):
+        for x in range(len(map[y])):
+            map[y][x] = random.randint(0, 1)
+
 
 
 
