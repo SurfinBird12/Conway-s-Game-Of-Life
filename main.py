@@ -2,7 +2,6 @@ import pygame
 import random
 import subprocess
 
-#Base functions: create_map(x), check_neighbours, refresh_map, print_map(x), draw_map(x)
 
 def create_map(rows, cols):
 
